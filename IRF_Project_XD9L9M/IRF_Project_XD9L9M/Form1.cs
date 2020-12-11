@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,14 @@ namespace IRF_Project_XD9L9M
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void LoadTermekek()
+        {
+            using (StreamReader sr = new StreamReader("IRF_Project.csv", Encoding.Default))
+            {
+
+            }
         }
     }
 }
