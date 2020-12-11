@@ -16,13 +16,23 @@ namespace IRF_Project_XD9L9M
         public Form1()
         {
             InitializeComponent();
+
+            LoadTermekek();
         }
 
+        private List<Termek> _termekek = new List<Termek>();    
         private void LoadTermekek()
         {
+            _termekek.Clear();
             using (StreamReader sr = new StreamReader("IRF_Project.csv", Encoding.Default))
             {
+                sr.ReadLine();
+                while (!sr.EndOfStream)
+                {
+                    string[] line = sr.ReadLine().Split(';');
 
+                    _termekek.Add(new Termek(line[0], line[1], int.Parse(line[2])));
+                }
             }
         }
     }
