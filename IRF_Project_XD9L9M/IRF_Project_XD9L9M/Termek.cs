@@ -9,56 +9,55 @@ namespace IRF_Project_XD9L9M
     class Termek
     {
 
-        private string _marka;
         private int _ar;
 
         public string Termeknev { get; set; }
         public Termek(string Termeknev, string Marka, int Ar)
         {
             this.Termeknev = Termeknev;
-            this._marka = Marka;
+            this.MarkaNev = Marka;
             this._ar = Ar;
         }
-        
-        //public int Marka
-        //{
-        //    get { return _marka; }
-        //    set
-        //    {
-        //        if (_marka = "1")
-        //        {
-        //            _marka = "Apple";
-        //        }
-        //        else if (_marka == 2)
-        //        {
-        //            _marka = "Huawei";
-        //        }
-        //        else if (_marka == 3)
-        //        {
-        //            _marka = "Samsung";
-        //        }
-        //        else if (_marka == 4)
-        //        {
-        //            _marka = "Xiaomi";
-        //        }
-        //        else if (_marka == 5)
-        //        {
-        //            _marka = "Oneplus";
-        //        }
-        //        else if (_marka == 6)
-        //        {
-        //            _marka = "Sony";
-        //        }
-        //        else if (_marka = "7")
-        //        {
-        //            _marka = "LG";
-        //        }
-        //        else
-        //        {
-        //            _marka = "Ismeretlen";
-        //        }
-        //    }
-        //}
+
+        public string MarkaNev { get; set; }
+        public int Marka
+        {
+            set
+            {
+                if (value == 1)
+                {
+                    MarkaNev = "Apple";
+                }
+                else if (value == 2)
+                {
+                    MarkaNev = "Huawei";
+                }
+                else if (value == 3)
+                {
+                    MarkaNev = "Samsung";
+                }
+                else if (value == 4)
+                {
+                    MarkaNev = "Xiaomi";
+                }
+                else if (value == 5)
+                {
+                    MarkaNev = "Oneplus";
+                }
+                else if (value == 6)
+                {
+                    MarkaNev = "Sony";
+                }
+                else if (value == 7)
+                {
+                    MarkaNev = "LG";
+                }
+                else
+                {
+                    MarkaNev = "Ismeretlen";
+                }
+            }
+        }
         public int Ar { get; set; }
 
         public string Arkategoria
