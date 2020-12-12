@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace IRF_Project_XD9L9M
 {
@@ -17,9 +19,33 @@ namespace IRF_Project_XD9L9M
         {
             InitializeComponent();
 
-            //DataGridView dgw = new DataGridView();
-            //Controls.Add(dgw);
+            List<Termek> termeks = new List<Termek>();
 
+            DGVClass dgw = new DGVClass();
+            dgw.DataSource = termeks;
+            Controls.Add(dgw);
+
+            //Label l1 = new Label();
+            //l1.Text = termeks[0].Termeknev.ToString();
+            //Controls.Add(l1);
+
+            Label label1 = new Label();
+            label1.Left = 680;
+            label1.Top = 10;
+            label1.Height = 60;
+            label1.Width = 80;
+            label1.Text = "Mobil"+ Environment.NewLine +"Shop";
+            label1.Font = new Font("Arial", 18);
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(label1);
+
+            Label label2 = new Label();
+            //Image i = Image.FromFile("iphone.png");
+            //label2.Size = new Size(i.Width, i.Height);
+            //label2.Image = i;
+            label2.Left = 680;
+            label2.Top = 40;
+            Controls.Add(label2);
 
             Gomb g = new Gomb();
             g.Text = "Termék hozzáadása";
@@ -52,7 +78,76 @@ namespace IRF_Project_XD9L9M
 
         private void g2_Click(object sender, EventArgs e)
         {
-            
+            Excel.Application xlApp;
+            Excel.Workbook xlWB;
+            Excel.Worksheet xlSheet;
+
+            //try
+            //{
+            //    xlApp = new Excel.Application();
+            //    xlWB = xlApp.Workbooks.Add(Missing.Value);
+            //    xlSheet = xlWB.ActiveSheet;
+
+            //    string[] headers = new string[]
+            //    {
+            //        "TermékNév",
+            //        "MárkaNév",
+            //        "Ár",
+            //        "Árkategória"
+            //    };
+
+            //    for (int i = 0; i < headers.Length; i++)
+            //    {
+            //        xlSheet.Cells[1, 1 + i] = headers[i];
+            //    }
+            //    object[,] values = new object[Termek.Count, headers.Length];
+            //    int counter = 0;
+            //    foreach (Termek termek in Termek)
+            //    {
+            //        values[counter, 0] = termek.Termeknev;
+            //        values[counter, 1] = termek.MarkaNev;
+            //        values[counter, 2] = termek.Ar;
+            //        values[counter, 3] = termek.Arkategoria;
+            //        counter++;
+            //    }
+            //    xlSheet.get_Range(GetCell(2, 1), GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+            //    Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
+            //    headerRange.Font.Bold = true;
+            //    headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            //    headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            //    headerRange.EntireColumn.AutoFit();
+            //    headerRange.RowHeight = 40;
+
+            //    xlApp.Visible = true;
+            //    xlApp.UserControl = true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
+            //    MessageBox.Show(errMsg, "Error");
+
+            //    xlWB.Close(false, Type.Missing, Type.Missing);
+            //    xlApp.Quit();
+            //    xlWB = null;
+            //    xlApp = null;
+            //}
+        }
+
+        private string GetCell(int x, int y)
+        {
+            string ExcelCoordinate = "";
+            int dividend = y;
+            int modulo;
+
+            while (dividend > 0)
+            {
+                modulo = (dividend - 1) % 26;
+                ExcelCoordinate = Convert.ToChar(65 + modulo).ToString() + ExcelCoordinate;
+                dividend = (int)((dividend - modulo) / 26);
+            }
+            ExcelCoordinate += x.ToString();
+
+            return ExcelCoordinate;
         }
 
         private List<Termek> _termekek = new List<Termek>();    
