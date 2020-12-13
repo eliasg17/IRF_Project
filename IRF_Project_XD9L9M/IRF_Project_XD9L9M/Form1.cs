@@ -19,15 +19,9 @@ namespace IRF_Project_XD9L9M
         {
             InitializeComponent();
 
-            List<Termek> termeks = new List<Termek>();
-
             DGVClass dgw = new DGVClass();
-            dgw.DataSource = termeks;
+            dgw.DataSource = _termekek;
             Controls.Add(dgw);
-
-            //Label l1 = new Label();
-            //l1.Text = termeks[0].Termeknev.ToString();
-            //Controls.Add(l1);
 
             Label label1 = new Label();
             label1.Left = 680;
@@ -39,13 +33,13 @@ namespace IRF_Project_XD9L9M
             label1.BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(label1);
 
-            Label label2 = new Label();
-            //Image i = Image.FromFile("iphone.png");
+            //PictureBox label2 = new PictureBox();
+            //Image i = Image.FromFile(@"iphone.png");
             //label2.Size = new Size(i.Width, i.Height);
             //label2.Image = i;
-            label2.Left = 680;
-            label2.Top = 40;
-            Controls.Add(label2);
+            //label2.Left = 680;
+            //label2.Top = 40;
+            //Controls.Add(label2);
 
             Gomb g = new Gomb();
             g.Text = "Termék hozzáadása";
@@ -61,13 +55,11 @@ namespace IRF_Project_XD9L9M
             g2.Click += new EventHandler(g2_Click);
             Controls.Add(g2);
 
-            LoadTermekek();
-
             ListBox lb = new ListBox();
             lb.Items.Add(_termekek.ToString());
             Controls.Add(lb);
-            
 
+            LoadTermekek();
         }
 
         private void g_Click(object sender, EventArgs e)
@@ -161,7 +153,9 @@ namespace IRF_Project_XD9L9M
                 {
                     string[] line = sr.ReadLine().Split(';');
 
-                    _termekek.Add(new Termek(line[0], line[1], int.Parse(line[2])));
+                    Console.WriteLine("+" + line[2] + "+");
+
+                    _termekek.Add(new Termek(line[0], line[1], line[2]));
                 }
             }
         }

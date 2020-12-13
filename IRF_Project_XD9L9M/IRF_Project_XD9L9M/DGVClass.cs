@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,9 @@ namespace IRF_Project_XD9L9M
         {
             Height = 350;
             Width = 650;
+            BackgroundColor = Color.White;
+            Enabled = false;
+            Font = new Font("Arial", 11);
         }
     }
 }
