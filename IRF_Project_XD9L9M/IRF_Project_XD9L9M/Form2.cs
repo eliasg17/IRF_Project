@@ -24,6 +24,10 @@ namespace IRF_Project_XD9L9M
             {
                 sw.WriteLine(textBox1.Text + ";" + comboBox1.Text + ";" + textBox2.Text);
             }
+            Form1 form1 = new Form1();
+            form1.Refresh();
+            form1.Beolvasas();
+            this.Close();
         }
     }
 }

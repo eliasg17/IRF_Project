@@ -64,7 +64,6 @@
     <Compile Include="Gomb.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Kep.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Termek.cs" />

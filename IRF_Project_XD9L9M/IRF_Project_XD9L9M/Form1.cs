@@ -19,11 +19,9 @@ namespace IRF_Project_XD9L9M
         {
             InitializeComponent();
 
-            DGVClass dgv = new DGVClass();
-            dgv.DataSource = _termekek;
-            dgv.AutoResizeColumns();
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            Controls.Add(dgv);
+            Beolvasas();
+            //ötlet: gombnyomásra a táblázat sorai az árak szerint beszíneződnek (mondjuk minél sötétebb zöld, annál drágább) 
+            // ehhez talán kell get set, mivel get: az árak értékei, set: milyen színű legyen a sor (if drágább mint x, akkor y szín)
 
             Label label1 = new Label();
             label1.Left = 680;
@@ -64,6 +62,14 @@ namespace IRF_Project_XD9L9M
             LoadTermekek();
         }
 
+        public void Beolvasas()
+        {
+            DGVClass dgv = new DGVClass();
+            dgv.DataSource = _termekek;
+            Controls.Add(dgv);
+            dgv.Refresh();
+        }
+
         private void g_Click(object sender, EventArgs e)
         {
             Form2 f2 = new Form2();
@@ -72,9 +78,9 @@ namespace IRF_Project_XD9L9M
 
         private void g2_Click(object sender, EventArgs e)
         {
-            Excel.Application xlApp;
-            Excel.Workbook xlWB;
-            Excel.Worksheet xlSheet;
+            //Excel.Application xlApp;
+            //Excel.Workbook xlWB;
+            //Excel.Worksheet xlSheet;
 
             //try
             //{
@@ -145,7 +151,7 @@ namespace IRF_Project_XD9L9M
         }
 
         private List<Termek> _termekek = new List<Termek>();    
-        private void LoadTermekek()
+        public void LoadTermekek()
         {
             _termekek.Clear();
             using (StreamReader sr = new StreamReader("IRF_Project.csv", Encoding.Default))

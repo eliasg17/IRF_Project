@@ -16,7 +16,8 @@ namespace IRF_Project_XD9L9M
             Width = 650;
             BackgroundColor = Color.White;
             Font = new Font("Arial", 11);
-            
+            AutoResizeColumns();
+            AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
     }
 }
