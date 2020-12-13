@@ -15,8 +15,8 @@ namespace IRF_Project_XD9L9M
             Height = 350;
             Width = 650;
             BackgroundColor = Color.White;
-            Enabled = false;
             Font = new Font("Arial", 11);
+            
         }
     }
 }

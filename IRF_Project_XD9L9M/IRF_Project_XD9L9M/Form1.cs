@@ -19,9 +19,11 @@ namespace IRF_Project_XD9L9M
         {
             InitializeComponent();
 
-            DGVClass dgw = new DGVClass();
-            dgw.DataSource = _termekek;
-            Controls.Add(dgw);
+            DGVClass dgv = new DGVClass();
+            dgv.DataSource = _termekek;
+            dgv.AutoResizeColumns();
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            Controls.Add(dgv);
 
             Label label1 = new Label();
             label1.Left = 680;
