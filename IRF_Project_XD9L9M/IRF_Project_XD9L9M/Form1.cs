@@ -15,6 +15,9 @@ namespace IRF_Project_XD9L9M
 {
     public partial class Form1 : Form
     {
+        Excel.Application xlApp;
+        Excel.Workbook xlWB;
+        Excel.Worksheet xlSheet;
         public Form1()
         {
             InitializeComponent();
@@ -101,59 +104,53 @@ namespace IRF_Project_XD9L9M
 
         private void g2_Click(object sender, EventArgs e)
         {
-            //Excel.Application xlApp;
-            //Excel.Workbook xlWB;
-            //Excel.Worksheet xlSheet;
+            try
+            {
+                xlApp = new Excel.Application();
+                xlWB = xlApp.Workbooks.Add(Missing.Value);
+                xlSheet = xlWB.ActiveSheet;
 
-            //try
-            //{
-            //    xlApp = new Excel.Application();
-            //    xlWB = xlApp.Workbooks.Add(Missing.Value);
-            //    xlSheet = xlWB.ActiveSheet;
+                string[] headers = new string[]
+                {
+                    "TermékNév",
+                    "MárkaNév",
+                    "Ár"
+                };
 
-            //    string[] headers = new string[]
-            //    {
-            //        "TermékNév",
-            //        "MárkaNév",
-            //        "Ár",
-            //        "Árkategória"
-            //    };
+                for (int i = 0; i < headers.Length; i++)
+                {
+                    xlSheet.Cells[1, 1 + i] = headers[i];
+                }
+                object[,] values = new object[_termekek.Count, headers.Length];
+                int counter = 0;
+                foreach (Termek termek in _termekek)
+                {
+                    values[counter, 0] = termek.Terméknév;
+                    values[counter, 1] = termek.Márka;
+                    values[counter, 2] = termek.Ár;
+                    counter++;
+                }
+                xlSheet.get_Range(GetCell(2, 1), GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+                Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
+                headerRange.Font.Bold = true;
+                headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                headerRange.EntireColumn.AutoFit();
+                headerRange.RowHeight = 40;
 
-            //    for (int i = 0; i < headers.Length; i++)
-            //    {
-            //        xlSheet.Cells[1, 1 + i] = headers[i];
-            //    }
-            //    object[,] values = new object[Termek.Count, headers.Length];
-            //    int counter = 0;
-            //    foreach (Termek termek in Termek)
-            //    {
-            //        values[counter, 0] = termek.Termeknev;
-            //        values[counter, 1] = termek.MarkaNev;
-            //        values[counter, 2] = termek.Ar;
-            //        values[counter, 3] = termek.Arkategoria;
-            //        counter++;
-            //    }
-            //    xlSheet.get_Range(GetCell(2, 1), GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
-            //    Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
-            //    headerRange.Font.Bold = true;
-            //    headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
-            //    headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-            //    headerRange.EntireColumn.AutoFit();
-            //    headerRange.RowHeight = 40;
+                xlApp.Visible = true;
+                xlApp.UserControl = true;
+            }
+            catch (Exception ex)
+            {
+                string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
+                MessageBox.Show(errMsg, "Error");
 
-            //    xlApp.Visible = true;
-            //    xlApp.UserControl = true;
-            //}
-            //catch (Exception ex)
-            //{
-            //    string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
-            //    MessageBox.Show(errMsg, "Error");
-
-            //    xlWB.Close(false, Type.Missing, Type.Missing);
-            //    xlApp.Quit();
-            //    xlWB = null;
-            //    xlApp = null;
-            //}
+                xlWB.Close(false, Type.Missing, Type.Missing);
+                xlApp.Quit();
+                xlWB = null;
+                xlApp = null;
+            }
         }
 
         private string GetCell(int x, int y)
