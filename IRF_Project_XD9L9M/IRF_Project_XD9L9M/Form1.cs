@@ -19,47 +19,66 @@ namespace IRF_Project_XD9L9M
         {
             InitializeComponent();
 
+            FormBetoltes();
+            LoadTermekek();
             Beolvasas();
             //ötlet: gombnyomásra a táblázat sorai az árak szerint beszíneződnek (mondjuk minél sötétebb zöld, annál drágább) 
             // ehhez talán kell get set, mivel get: az árak értékei, set: milyen színű legyen a sor (if drágább mint x, akkor y szín)
+        }
+
+        private void FormBetoltes()
+        {
 
             Label label1 = new Label();
-            label1.Left = 680;
-            label1.Top = 10;
+            label1.Left = 670;
+            label1.Top = 40;
             label1.Height = 60;
-            label1.Width = 80;
-            label1.Text = "Mobil"+ Environment.NewLine +"Shop";
-            label1.Font = new Font("Arial", 18);
+            label1.Width = 110;
+            label1.Text = "Mobil" + Environment.NewLine + "Shop";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Font = new Font("Castellar", 18);
+            label1.ForeColor = Color.White;
+            label1.BackColor = Color.Gray;
             label1.BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(label1);
 
-            //PictureBox label2 = new PictureBox();
-            //Image i = Image.FromFile(@"iphone.png");
-            //label2.Size = new Size(i.Width, i.Height);
-            //label2.Image = i;
-            //label2.Left = 680;
-            //label2.Top = 40;
-            //Controls.Add(label2);
+            PictureBox pb1 = new PictureBox();
+            Image i = Image.FromFile(@"iphone.png");
+            pb1.Size = new Size(100,200);
+            pb1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb1.Image = i;
+            pb1.Left = 675;
+            pb1.Top = 80;
+            Controls.Add(pb1);
+
+            Button bezar = new Button();
+            bezar.Width = 25;
+            bezar.Height = 25;
+            bezar.Top = 5;
+            bezar.Left = 770;
+            bezar.Text = "X";
+            bezar.BackColor = Color.Red;
+            bezar.Click += new EventHandler(bezarClick);
+            Controls.Add(bezar);
 
             Gomb g = new Gomb();
             g.Text = "Termék hozzáadása";
-            g.Top = 260;
-            g.Left = 690;
+            g.Top = 290;
+            g.Left = 670;
             g.Click += new EventHandler(g_Click);
             Controls.Add(g);
 
             Gomb g2 = new Gomb();
             g2.Text = "Excel létrehozása";
-            g2.Top = 310;
-            g2.Left = 690;
+            g2.Top = 340;
+            g2.Left = 670;
             g2.Click += new EventHandler(g2_Click);
             Controls.Add(g2);
+        }
 
-            ListBox lb = new ListBox();
-            lb.Items.Add(_termekek.ToString());
-            Controls.Add(lb);
-
-            LoadTermekek();
+        private void bezarClick(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         public void Beolvasas()
@@ -151,7 +170,7 @@ namespace IRF_Project_XD9L9M
         }
 
         private List<Termek> _termekek = new List<Termek>();    
-        public void LoadTermekek()
+        private void LoadTermekek()
         {
             _termekek.Clear();
             using (StreamReader sr = new StreamReader("IRF_Project.csv", Encoding.Default))

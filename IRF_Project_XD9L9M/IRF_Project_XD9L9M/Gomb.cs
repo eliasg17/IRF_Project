@@ -13,12 +13,24 @@ namespace IRF_Project_XD9L9M
         public Gomb()
         {
             Height = 40;
-            Width = 80;
+            Width = 110;
             BackColor = Color.SteelBlue;
             Font = new Font("Arial", 8);
             ForeColor = Color.White;
 
             MouseDown += Gomb_MouseDown;
+            MouseEnter += Gomb_MouseEnter;
+            MouseLeave += Gomb_MouseLeave;
+        }
+
+        private void Gomb_MouseLeave(object sender, EventArgs e)
+        {
+            Font = new Font("Arial", 8);
+        }
+
+        private void Gomb_MouseEnter(object sender, EventArgs e)
+        {
+            Font = new Font("Arial", 8, FontStyle.Bold);
         }
 
         private void Gomb_MouseDown(object sender, MouseEventArgs e)

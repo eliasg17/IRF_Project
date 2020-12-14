@@ -12,12 +12,12 @@ namespace IRF_Project_XD9L9M
     {
         public DGVClass()
         {
-            Height = 350;
+            Height = 400;
             Width = 650;
-            BackgroundColor = Color.White;
+            BackgroundColor = Color.Gray;
             Font = new Font("Arial", 11);
             AutoResizeColumns();
-            AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }
