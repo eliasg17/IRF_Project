@@ -68,29 +68,5 @@ namespace IRF_Project_XD9L9M
                 ár = value + " Ft";
             }
         }
-
-        //public string Arkategoria
-        //{
-        //    get { return Arkategoria; }
-        //    set
-        //    {
-        //        if (_ar <50000)
-        //        {
-        //            Arkategoria = "$";
-        //        }
-        //        else if (_ar >=50000 && _ar <150000)
-        //        {
-        //            Arkategoria = "$$";
-        //        }
-        //        else if (_ar >=15000 && _ar < 300000)
-        //        {
-        //            Arkategoria = "$$$";
-        //        }
-        //        else
-        //        {
-        //            Arkategoria = "$$$$";
-        //        }
-        //    }
-        //}
     }
 }

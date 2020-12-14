@@ -51,14 +51,9 @@ namespace IRF_Project_XD9L9M
             pb1.Top = 80;
             Controls.Add(pb1);
 
-            Button bezar = new Button();
-            bezar.Width = 25;
-            bezar.Height = 25;
-            bezar.Top = 5;
+            BezarGomb bezar = new BezarGomb();
             bezar.Left = 770;
-            bezar.Text = "X";
-            bezar.BackColor = Color.Red;
-            bezar.Click += new EventHandler(bezarClick);
+            bezar.Click += Bezar_Click;
             Controls.Add(bezar);
 
             Gomb g = new Gomb();
@@ -76,22 +71,31 @@ namespace IRF_Project_XD9L9M
             Controls.Add(g2);
         }
 
-        private void bezarClick(object sender, EventArgs e)
+        private void Bezar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        private DGVClass dgv;
         public void Beolvasas()
         {
-            DGVClass dgv = new DGVClass();
+            dgv = new DGVClass();
             dgv.DataSource = _termekek;
             Controls.Add(dgv);
-            dgv.Refresh();
+        }
+
+        public void Frissites()
+        {
+            Controls.Remove(dgv);
+            LoadTermekek();
+            dgv = new DGVClass();
+            dgv.DataSource = _termekek;
+            Controls.Add(dgv);
         }
 
         private void g_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
+            Felvetel f2 = new Felvetel(this);
             f2.Show();
         }
 
