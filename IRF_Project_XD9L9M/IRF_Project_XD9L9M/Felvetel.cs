@@ -70,7 +70,7 @@ namespace IRF_Project_XD9L9M
             cb1.Top = 110;
             cb1.Width = 220;
             cb1.Height = 30;
-            cb1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7" });
+            cb1.Items.AddRange(new object[] { "Apple", "Huawei", "Samsung", "Xiaomi", "Oneplus", "Sony", "LG" });
             Controls.Add(cb1);
 
             l3 = new Label();
@@ -140,7 +140,7 @@ namespace IRF_Project_XD9L9M
             {
                 using (StreamWriter sw = new StreamWriter("IRF_Project.csv", true, Encoding.Default))
                 {
-                    sw.WriteLine(tb1.Text + ";" + cb1.Text + ";" + tb2.Text);
+                    sw.WriteLine(tb1.Text + ";" + (cb1.SelectedIndex+1) + ";" + tb2.Text);
                 }
 
                 form1.Frissites();

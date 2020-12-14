@@ -15,7 +15,7 @@ namespace IRF_Project_XD9L9M
             Height = 40;
             Width = 110;
             BackColor = Color.SteelBlue;
-            Font = new Font("Arial", 8);
+            Font = new Font("Arial", 9);
             ForeColor = Color.White;
 
             MouseDown += Gomb_MouseDown;
@@ -25,18 +25,18 @@ namespace IRF_Project_XD9L9M
 
         private void Gomb_MouseLeave(object sender, EventArgs e)
         {
-            Font = new Font("Arial", 8);
+            Font = new Font("Arial", 9);
         }
 
         private void Gomb_MouseEnter(object sender, EventArgs e)
         {
-            Font = new Font("Arial", 8, FontStyle.Bold);
+            Font = new Font("Arial", 10, FontStyle.Bold);
         }
 
         private void Gomb_MouseDown(object sender, MouseEventArgs e)
         {
             BackColor = Color.MidnightBlue;
-            Font = new Font("Arial", 8, FontStyle.Italic);
+            Font = new Font("Arial", 9, FontStyle.Italic);
         }
     }
 }

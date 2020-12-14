@@ -25,8 +25,6 @@ namespace IRF_Project_XD9L9M
             FormBetoltes();
             LoadTermekek();
             Beolvasas();
-            //ötlet: gombnyomásra a táblázat sorai az árak szerint beszíneződnek (mondjuk minél sötétebb zöld, annál drágább) 
-            // ehhez talán kell get set, mivel get: az árak értékei, set: milyen színű legyen a sor (if drágább mint x, akkor y szín)
         }
 
         private void FormBetoltes()
@@ -112,9 +110,9 @@ namespace IRF_Project_XD9L9M
 
                 string[] headers = new string[]
                 {
-                    "TermékNév",
-                    "MárkaNév",
-                    "Ár"
+                    "Termék neve",
+                    "Termék márkája",
+                    "Termék ára"
                 };
 
                 for (int i = 0; i < headers.Length; i++)
@@ -132,11 +130,28 @@ namespace IRF_Project_XD9L9M
                 }
                 xlSheet.get_Range(GetCell(2, 1), GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
                 Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
+                headerRange.Font.Size = 16;
                 headerRange.Font.Bold = true;
                 headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
                 headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                headerRange.EntireColumn.AutoFit();
+                headerRange.Interior.Color = Color.Gray;
                 headerRange.RowHeight = 40;
+
+                Excel.Range ItemRowRange = xlSheet.get_Range(GetCell(2, 2), GetCell(counter+1, 3));
+                ItemRowRange.RowHeight = 30;
+                ItemRowRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                ItemRowRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                ItemRowRange.Font.Size = 14;
+                ItemRowRange.Interior.Color = Color.LightGray;
+                ItemRowRange.EntireColumn.AutoFit();
+
+                Excel.Range ItemRowRange2 = xlSheet.get_Range(GetCell(2, 1), GetCell(counter+1, 1));
+                ItemRowRange2.RowHeight = 30;
+                ItemRowRange2.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                ItemRowRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                ItemRowRange2.Font.Size = 14;
+                ItemRowRange2.Interior.Color = Color.LightGray;
+                ItemRowRange2.EntireColumn.AutoFit();
 
                 xlApp.Visible = true;
                 xlApp.UserControl = true;

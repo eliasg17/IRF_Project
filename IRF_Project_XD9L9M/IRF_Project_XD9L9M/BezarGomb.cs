@@ -17,6 +17,7 @@ namespace IRF_Project_XD9L9M
             Top = 5;
             Text = "X";
             BackColor = Color.Red;
+            TextAlign = ContentAlignment.MiddleCenter; 
         }
     }
 }
