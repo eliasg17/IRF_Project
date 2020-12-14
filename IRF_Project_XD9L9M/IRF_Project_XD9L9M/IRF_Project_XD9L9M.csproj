@@ -49,6 +49,12 @@
     <Compile Include="DGVClass.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Felvetel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Felvetel.Designer.cs">
+      <DependentUpon>Felvetel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
