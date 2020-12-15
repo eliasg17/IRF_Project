@@ -138,7 +138,7 @@ namespace IRF_Project_XD9L9M
         {
             if (ValidateTB2())
             {
-                using (StreamWriter sw = new StreamWriter("IRF_Project.csv", true, Encoding.Default))
+                using (StreamWriter sw = new StreamWriter("C:/Users/elias/source/repos/IRF_Project/IRF_Project_XD9L9M/IRF_Project_XD9L9M/csv/IRF_Project.csv", true, Encoding.Default))
                 {
                     sw.WriteLine(tb1.Text + ";" + (cb1.SelectedIndex+1) + ";" + tb2.Text);
                 }

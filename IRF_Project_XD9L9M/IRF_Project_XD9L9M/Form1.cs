@@ -189,7 +189,7 @@ namespace IRF_Project_XD9L9M
         private void LoadTermekek()
         {
             _termekek.Clear();
-            using (StreamReader sr = new StreamReader("IRF_Project.csv", Encoding.Default))
+            using (StreamReader sr = new StreamReader("C:/Users/elias/source/repos/IRF_Project/IRF_Project_XD9L9M/IRF_Project_XD9L9M/csv/IRF_Project.csv", Encoding.Default))
             {
                 sr.ReadLine();
                 while (!sr.EndOfStream)
