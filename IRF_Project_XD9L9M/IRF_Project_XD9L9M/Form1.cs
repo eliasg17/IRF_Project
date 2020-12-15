@@ -26,7 +26,6 @@ namespace IRF_Project_XD9L9M
             LoadTermekek();
             Beolvasas();
         }
-
         private void FormBetoltes()
         {
 
@@ -44,7 +43,7 @@ namespace IRF_Project_XD9L9M
             Controls.Add(label1);
 
             PictureBox pb1 = new PictureBox();
-            Image i = Image.FromFile(@"C:\Users\elias\source\repos\IRF_Project\IRF_Project_XD9L9M\IRF_Project_XD9L9M\images\iphone.png");
+            Image i = Image.FromFile(@"images/iphone.png");
             pb1.Size = new Size(100,200);
             pb1.SizeMode = PictureBoxSizeMode.StretchImage;
             pb1.Image = i;
@@ -189,7 +188,7 @@ namespace IRF_Project_XD9L9M
         private void LoadTermekek()
         {
             _termekek.Clear();
-            using (StreamReader sr = new StreamReader("C:/Users/elias/source/repos/IRF_Project/IRF_Project_XD9L9M/IRF_Project_XD9L9M/csv/IRF_Project.csv", Encoding.Default))
+            using (StreamReader sr = new StreamReader(@"csv/IRF_Project.csv", Encoding.Default))
             {
                 sr.ReadLine();
                 while (!sr.EndOfStream)
