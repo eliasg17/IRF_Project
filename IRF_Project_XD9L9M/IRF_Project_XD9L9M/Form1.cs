@@ -134,7 +134,7 @@ namespace IRF_Project_XD9L9M
                 headerRange.Font.Bold = true;
                 headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
                 headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                headerRange.Interior.Color = Color.Gray;
+                headerRange.Interior.Color = Color.DimGray;
                 headerRange.RowHeight = 40;
 
                 Excel.Range ItemRowRange = xlSheet.get_Range(GetCell(2, 2), GetCell(counter+1, 3));
@@ -195,8 +195,6 @@ namespace IRF_Project_XD9L9M
                 while (!sr.EndOfStream)
                 {
                     string[] line = sr.ReadLine().Split(';');
-
-                    Console.WriteLine("+" + line[2] + "+");
 
                     _termekek.Add(new Termek(line[0], line[1], line[2]));
                 }
