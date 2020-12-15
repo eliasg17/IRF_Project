@@ -44,7 +44,7 @@ namespace IRF_Project_XD9L9M
             Controls.Add(label1);
 
             PictureBox pb1 = new PictureBox();
-            Image i = Image.FromFile(@"iphone.png");
+            Image i = Image.FromFile(@"C:\Users\elias\source\repos\IRF_Project\IRF_Project_XD9L9M\IRF_Project_XD9L9M\images\iphone.png");
             pb1.Size = new Size(100,200);
             pb1.SizeMode = PictureBoxSizeMode.StretchImage;
             pb1.Image = i;

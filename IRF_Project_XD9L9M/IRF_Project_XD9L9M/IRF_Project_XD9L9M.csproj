@@ -129,7 +129,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="iphone.png" />
+    <Content Include="images\iphone.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
